@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>单链表结构的封装</title>
+</head>
+<body>
+<script>
+  function LinkList() {
+    //============1.属性
+    /*由于一个节点有data数据和next指针，所以想到定义一个内部类*/
+    function Node(data) {
+      this.data = data
+      this.next = null
+    }
+    /*默认头指针指向null*/
+    this.head = null
+    /*建议加上length数据，记录元素的长度*/
+    this.length = 0
+
+    //2.=========方法
+    //1.向链表的尾部添加一个元素append方法
+    LinkList.prototype.append = function (data) {
+      /*1.1创建一个新节点*/
+      let newNode = new Node(data)
+      /*1.2判断添加的新节点是否是第一个节点*/
+      if(this.length === 0){
+        //是第一个节点，直接将head指针指向该新节点
+        this.head = newNode
+      }else{
+        //不是第一个节点，则需要找到原链表中的最后一个元素
+        let cur = this.head//cur用来记录当前节点，head指针是指向第一个节点
+        while(cur.next){
+          cur = cur.next//如果不是最后一个节点，则更新当前节点的cur
+        }
+        //是最后一个节点，则让最后一个节点的next指针指向该新节点
+        cur.next = newNode
+      }
+      //由于新增加了一个节点，所以长度+1
+      this.length += 1
+    }
+    //2.toString方法
+    LinkList.prototype.toString = function () {
+      //1.找到第一个节点
+      let cur = this.head
+      let result = ''
+      //2.循环遍历所有的节点，并取出每个节点的data，拼接起来
+      while(cur){
+        /*只要cur节点不为空。则取出data拼接*/
+        result += cur.data + ' '
+        /*更新cur，防止出现死循环*/
+        cur = cur.next
+      }
+      return result
+    }
+    //insert方法
+    LinkList.prototype.insert = function (pos,data) {
+      /*1.判断pos是否越界*/
+      if(pos < 0 || pos > this.length){
+        return false
+      }
+
+      let newNode = new Node(data)
+      /*情况1：插入后，链表中一共只有一个元素*/
+      if(this.length === 0){
+        this.head = newNode
+        newNode.next = null
+      }else{
+        /*情况2：在第一个位置插入，即pos=0*/
+        if(pos === 0){
+          newNode.next = this.head
+          this.head = newNode
+        }else{
+          /*情况3：在其他位置插入*/
+          let previous = null//第一个节点的前一个为空
+          let current = this.head//默认当前节点是head指针所指向的节点
+          let index = 0
+          //找到指定位置的前面所有元素，不断更新current和previous的值
+          /*!!!!!!注意：这里是index++，所以是先进入while循环结束之后，index+1!!!!!
+          * 假设要插入的位置是pos=2
+          * index=0<pos => cur指向第二个元素，pre指向第一个元素 => index+1=1
+          * index=1<pos => cur指向第三个元素，pre指向第二个元素 => index+1=2
+          * index=2=pos => 跳出循环
+          * 执行：newNode.next=cur; previous.next=newNode
+          * */
+          while(index++ < pos){
+            previous = current
+            current = current.next
+          }
+          //到这里的时候已经current就是pos所指向的原来链表中的元素，在这个位置插入元素
+          newNode.next = current
+          previous.next = newNode
+        }
+      }
+
+      //length+1
+      this.length += 1
+      return true
+    }
+    //get方法
+    LinkList.prototype.get = function (pos) {
+      /*1.越界判断*/
+      if(pos < 0 || pos >= this.length)
+        return null//最后一个元素下标为length-1，当pos=length时，已经越界
+      /*2.获取元素*/
+      let current = this.head//记录当前遍历到的元素，默认第一个开始元素为第一个元素
+      let index = 0//默认第一个元素的index=0
+      /*
+      * 假设我要查找pos=2的元素
+      * 初始状态，current指向第一个元素
+      * index=0<pos => current指向第二个元素,index+1=1
+      * index=1<pos => current指向第三个元素，index+1=2
+      * index=2=pos => 跳出while循环，return第三个元素的data
+      * */
+      // while(index < pos){
+      //   current = current.next//一个一个的往下找元素
+      //   index++
+      // }
+      while(index++ < pos){
+        current = current.next//上面代码的精简操作
+      }
+      return current.data
+    }
+    //indexOf方法，找到指定元素的下标值，没有则返回-1
+    LinkList.prototype.indexOf = function (data) {
+      /*1.定义变量*/
+      let index = 0
+      let current = this.head
+      /*2.开始擦查找*/
+      while(current){
+        if(current.data === data)
+          return index
+        current = current.next
+        index++
+      }
+      //跳出循环，说明current指向null，此时没有找到则返回-1
+      return -1
+    }
+    //update方法
+    LinkList.prototype.update = function (pos,data) {
+      /*1.判断越界*/
+      if(pos < 0 || pos >= this.length)
+        return false
+      /*2.开始修改元素*/
+      let current = this.head
+      let index = 0
+      //2.1找到pos位置上的元素
+      while(index++ < pos){
+        current = current.next
+      }
+      //2.2修改元素
+      current.data = data
+      return true
+    }
+    //removeAt方法
+    LinkList.prototype.removeAt = function (pos) {
+      /*1.越界判断*/
+      if(pos < 0 || pos >= this.length)
+        return null
+      /*2.删除操作*/
+      let current = this.head//将该变量定义在大括号外面，便于返回删除的结果
+      /*情况1：删除第一个元素*/
+      if(pos === 0){
+        this.head = this.head.next
+      }else{
+        /*情况2，删除其他元素*/
+        let index = 0
+        let previous = null
+        while(index++ < pos){
+          previous = current
+          current = current.next
+        }
+        //此时current指向的元素就是要删除的元素
+        previous.next = current.next
+      }
+      //删除元素之后length-1
+      this.length -= 1
+      return current.data
+    }
+    //remove方法
+    LinkList.prototype.remove = function (data) {
+      /*1.通过indexOf获取到data的位置*/
+      let pos = list.indexOf(data)
+      /*2.利用removeAt删除指定pos的元素*/
+      return list.removeAt(pos)
+
+      // /*1.查找该元素*/
+      // let current = this.head
+      // let previous = null
+      // while(current){
+      //   //进入该while循环，说明没有遍历到最后一个元素
+      //   if(current.data === data){
+      //     /*删除元素*/
+      //     previous.next = current.next
+      //     /*length-1*/
+      //     this.length -= 1
+      //     return current.data
+      //     break
+      //   }
+      //   previous = current
+      //   current = current.next
+      // }
+      // //跳出该while循环，说明已经遍历到最后一个元素的后面，此时current=null
+      // return null
+    }
+    //isEmpty方法
+    LinkList.prototype.isEmpty = function () {
+      return this.length === 0
+    }
+    //size方法
+    LinkList.prototype.size = function () {
+      return this.length
+    }
+
+  }
+
+  //测试代码
+  // let l = new LinkList()
+  // l.insert(0,'haha')
+  // console.log(l.toString());
+
+  let list = new LinkList()
+  // list.append('abc')
+  // list.append('aaa')
+  // list.append(123)
+  // console.log(list.toString());
+  //
+  list.insert(0,'00')
+  console.log(list.insert(3, 'haha'));
+  console.log(list.insert(6, '666'));
+  console.log(list);
+  //
+  // console.log(list.get(0));
+  // console.log(list.get(3));
+  // console.log(list.get(6));
+  //
+  // console.log(list.indexOf('00'));
+  // console.log(list.indexOf('aaa'));
+  //
+  // list.update(0,'hello')
+  // list.update(2,'world')
+  // console.log(list.toString());
+  //
+  // console.log(list.removeAt(0));
+  // console.log(list.removeAt(2));
+  // console.log(list.removeAt(4));
+  //
+  // console.log(list.toString());
+  // console.log(list.remove('world'));
+  // console.log(list.toString());
+  // console.log(list.remove('heihei'));
+  // console.log(list.toString());
+  //
+  // list.remove('abc')
+  // list.remove(123)
+  // console.log(list.isEmpty());
+  // console.log(list.size());
+</script>
+
+</body>
+</html>

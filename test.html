@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  * 题目：快速排序实现
+  * */
+  //声明一个方法，用于交换两个节点的值
+  function swap(p, q) {
+    let val = p.val
+    //const val = p.val
+    p.val = q.val
+    q.val = val
+  }
+
+  //寻找基准数的方法partion
+  let partion = (begin, end = null) => {
+    /*默认取链表的第一个元素作为基准数val*/
+    let val = begin.val
+    //const val = begin.val
+    /*定义一个p指针，默认值想第一个节点*/
+    let p = begin
+    /*定义一个q指针，默认指向第一个节点的下一个节点，因为从第二个元素开始遍历与基准数作比较*/
+    let q = begin.next
+
+    while (q !== end) {
+      if (q.val < val) {
+        /*当q指针所指向的元素小于p指针所指向的元素，则将q指针所指向的元素和p指针所指向的元素的下一个元素进行交换*/
+        swap(p.next,q)
+        /*移动p指针*/
+        p = p.next
+
+        // p = p.next
+        // swap(p, q)
+      }
+      /*移动q指针*/
+      q = q.next
+    }
+    // 让基准元素跑到中间去
+    swap(p, begin)
+    return p
+  }
+
+//递归实现快速排序
+  let sortList = function(begin, end) {
+    if (begin !== end && begin !== null) {
+      /*第一次begin和end之后，找到基准数part*/
+      let part = partion(begin, end)
+      /*基准数左边实现快速排序*/
+      sortList(begin, part)
+      /*基准数右边实现快速排序*/
+      sortList(part.next, end)
+    }
+    return begin
+  }
+
+//声明一个节点类对象
+  class Node {
+    constructor(val) {
+      this.val = val
+      this.next = null
+    }
+  }
+//声明一个链表结构
+  class LinkList {
+    constructor(arr) {
+      /*取出数组的第一个元素，做为第一个节点，shift函数删除第一个元素并返回删除的元素*/
+      let firstNode = new Node(arr.shift())
+      //const head = new Node(arr.shift())
+      let nextNode = firstNode
+      arr.forEach(item => {
+        /*将下一个节点指向再下一个节点，即是一个新节点对象*/
+        nextNode.next = new Node(item)
+        /*同时更新nextNode的值，使得新生成的节点作为下一个节点的父节点*/
+        nextNode = nextNode.next
+      })
+      console.log('LinkList:',firstNode);
+      /*返回的就是一个链表结构，firstNode是头节点，之后的next不断只想下一个节点*/
+      return firstNode // this绑定到了返回的对象上
+    }
+
+    /*将链表结构转换为数组结构，toArray静态方法方法*，这里要写方法只能写静态方法static*/
+    static transferArray = (list) => {
+      let arr = []
+      /*只要该节点存在九江节点push到arr中*/
+      while (list) {
+        //console.log(list);
+        arr.push(list.val)
+        list = list.next
+      }
+      return arr
+    }
+    // static toArray(list) {
+    //   let arr = []
+    //   while (list.next) {
+    //     arr.push(list.val)
+    //     list = list.next
+    //   }
+    //   return arr
+    // }
+  }
+
+  const list = new LinkList([6, 1, 2, 7, 9, 3, 4, 5, 10, 8])
+  console.log(list,'类型：'+typeof list)//list是一个节点“对象 ”，
+  sortList(list)
+  console.log( LinkList.transferArray(list))
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>环形链表</title>
+</head>
+<body>
+<!--
+题目：给定一个链表，判断链表中是否有环。
+为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+解析：
+  1. 定义两个指针fast指针和slow，起始位置都指向第一个节点
+  2. fast指针每次向后移动两个节点；slow指针每次向后移动一个节点
+  3. 有环：
+      · fast指针撞上了slow指针
+      · fast指针跑到了slow指针的后面
+  4. 无环，当fast指针所指向的节点为undefined，且slow指针始终在fast指针的后面，表示已到达单链表尾部，此时无环
+-->
+
+<!--方法3：利用走过的路做标记-->
+<script>
+  function hasCircle3(head) {
+    while (head){
+      if(head.val === 'xxx')
+        return true
+      else
+        head.val = 'xxx'
+      head = head.next//移动指针
+    }
+    return false
+  }
+</script>
+
+<!--方法2：利用JSON.stringify()不能字符串化循环引用的结构-->
+<script>
+  function hasCircle2(head) {
+    try {
+      JSON.stringify(head)
+      return false
+    }catch (err) {
+      return true
+    }
+  }
+</script>
+
+<!--方法1：快慢指针法-->
+<script>
+  /*这里的head就是一个单链表，其实就是数组*/
+  //定义一个Node类，用于创建节点
+  class Node{
+    constructor(data) {
+      this.value = data
+      this.next = null
+    }
+  }
+
+  //定义NodeList类，用于创建链表结构
+  class NodeList{
+    constructor(arr) {
+      /*第一个接待你*/
+      let headNode = new Node(arr.shift())
+      /*下一个节点，默认指向第一个节点*/
+      let nextNode = headNode
+      /*将节点与节点之间用链表关联起来*/
+      arr.forEach(item => {
+        /*下一个节点指向新的节点*/
+        nextNode.next = new Node(item)
+        /*跟新下一个节点的值*/
+        nextNode = nextNode.next
+      })
+      /*返回链表结构*/
+      // console.log('链表结构：' + headNode);
+      return headNode
+    }
+  }
+
+  //判断单链表是否有环
+  function hasCircle(head) {
+    /*判断是否是空链表或者只有一个节点的链表，此时一定没有环*/
+    if(!head || !head.next)
+      return false
+    /*慢指针，起始指向第 1个节点*/
+    let slow = head
+    /*快指针，起始指向第 2个节点*/
+    let fast = head.next
+
+    /*只要slow指针不等于fast指针，fast指针就每次移动两步，slow指针就每次移动一步*/
+    while (slow !== fast){
+      /*当fast指针到达尾部的时候，说明没有环*/
+      if(!fast || !fast.next){
+        return false
+      }
+      /*慢指针一次走一步*/
+      slow = slow.next
+      /*快指针一次走两步*/
+      fast = fast.next.next
+    }
+    /*当slow = fast时，跳出while循环，索命有环，返回true*/
+    return true
+  }
+</script>
+</body>
+</html>

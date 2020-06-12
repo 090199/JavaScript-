@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>集合的封装</title>
+</head>
+<body>
+<script>
+  function Set() {
+    //属性
+    this.items = {}
+    //方法
+    //1.add方法
+    Set.prototype.add = function (value) {
+      /*判断集合中是否已经存在该元素，是则添加失败*/
+      if(this.has(value)){
+        return false
+      }
+      /*将value作为对象的键名同时将value作为键名，保存在对象中*/
+      this.items[value] = value
+      return true
+    }
+    //2.has方法
+    Set.prototype.has = function (value) {
+      /*hasOwnProperty查找一个对象中是否包含某个属性，但是不回去找它的原型链*/
+      return this.items.hasOwnProperty(value)
+    }
+    //3.remove方法
+    Set.prototype.remove = function (value) {
+      //如果该集合中不存在该值，则删除失败
+      if(!this.has(value))
+        return false
+      //删除元素
+      delete this.items[value]
+      return true
+    }
+    //4.clear方法
+    Set.prototype.clear = function () {
+      this.items = {}
+      return true
+    }
+    //5.size方法
+    Set.prototype.size = function () {
+      return Object.keys(this.items).length
+    }
+    //6.values方法
+    Set.prototype.values = function () {
+      return Object.keys(this.items)
+    }
+
+    /*==============集合间的操作==============*/
+    //1.并集操作
+    Set.prototype.union = function (otherSet) {
+      /*this:指代当前集合A; otherSet：指代集合B*/
+      /*1.创建一个新的集合*/
+      let unionSet = new Set()
+      /*2.将集合A全部保存在新的集合中*/
+      let values = this.values()
+      for(let i = 0; i < values.length; i++){
+        unionSet.add(values[i])
+      }
+      /*3.遍历集合B，将不重复的元素存放在新集合中*/
+      values = otherSet.values()
+      for(let i = 0; i < values.length; i++){
+        /*可以直接将B中的元素保存在新集合中，因为该集合中add有判断是否重复的操作*/
+        unionSet.add(values[i])
+      }
+      return unionSet
+    }
+    //2.交集操作
+    Set.prototype.intersection = function (otherSet) {
+      /*1.创建一个新集合*/
+      let intersectionSet = new Set()
+      /*2.取出集合A中的元素遍历*/
+      let values = this.values()
+      for(let i = 0; i < values.length; i++){
+        if(otherSet.has(values[i])){
+          intersectionSet.add(values[i])
+        }
+      }
+      /*3.返回结果*/
+      return intersectionSet
+    }
+    //3.差集操作
+    Set.prototype.difference = function (otherSet) {
+      let differenceSet = new Set()
+      let values = this.values()
+      for(let i = 0; i < values.length; i++){
+        if(!otherSet.has(values[i])){
+          differenceSet.add(values[i])
+        }
+      }
+      return differenceSet
+    }
+    //4.子集操作
+    Set.prototype.subset = function (otherSet) {
+      let values = this.values()
+      for(let i = 0; i < values.length; i++){
+        if(!otherSet.has(values[i])){
+          return false
+        }
+      }
+      return true
+    }
+
+
+  }
+
+  //=========集合间的操作测试
+  let setA = new Set()
+  setA.add('abc')
+  setA.add('bac')
+  setA.add('cba')
+  console.log(setA.values());
+
+  let setB = new Set()
+  setB.add('cba')
+  setB.add('abc')
+  setB.add('11')
+  console.log(setA.values());
+
+  console.log('-------');
+  console.log(setB.subset(setA));
+
+
+  // let setA = new Set()
+  // setA.add('abc')
+  // setA.add('bac')
+  // setA.add('cba')
+  // let setB = new Set()
+  // setB.add('aaa')
+  // setB.add('cba')
+  // setB.add('abc')
+  // console.log(setA.union(setB).values());
+  //
+  // console.log('----------');
+  // console.log(setA.intersection(setB).values());
+  //
+  // console.log('----------');
+  // console.log(setA.difference(setB).values());
+
+  //=========基本方法代码测试
+  // let set = new Set()
+  // console.log(set.add('abc'));
+  // console.log(set.add('bac'));
+  // console.log(set.add('abc'));
+  // console.log(set.add('cba'));
+  // console.log(set.add(0));
+  // console.log(set.add('0'));
+  // console.log(set.values());
+  //
+  // console.log(set.remove('abc'));
+  // console.log(set.remove('abc'));
+  // console.log(set.values());
+  //
+  // console.log(set.has(0));
+  // console.log(set.size());
+  // console.log(set.clear());
+  // console.log(set.size());
+
+
+</script>
+</body>
+</html>

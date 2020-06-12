@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>栈结构的封装</title>
+</head>
+<body>
+<script>
+  // 1.封装栈类
+  function Stack() {
+    /*栈中的属性*/
+    this.items = []//栈中的所有元素都叫items
+    /*栈的相关操作*/
+    // 1.将元素是压入栈
+    Stack.prototype.push = function (element) {
+      this.items.push(element)
+    }
+    // 2.去除栈顶元素
+    Stack.prototype.pop = function () {
+      return this.items.pop()
+    }
+    // 3.查看栈顶元素
+    Stack.prototype.peek = function () {
+      return this.items[this.items.length-1]
+    }
+    // 4.获取栈中的元素个数
+    Stack.prototype.size = function () {
+      return this.items.length
+    }
+    // 5.判断栈是否为空
+    Stack.prototype.isEmpty = function () {
+      return this.items.length == 0
+    }
+    // toString()方法
+    Stack.prototype.toString = function () {
+      //12 4 55 32 9
+      let res = ''
+      for(let i = 0; i < this.items.length; i++){
+        res += this.items[i] + ' '
+      }
+      return res
+    }
+  }
+  // 2.栈结构的使用
+  let s = new Stack()
+
+  s.push(12)
+  s.push(4)
+  s.push(55)
+  s.push(32)
+  s.push(9)
+  console.log(s)
+
+  s.pop()
+  s.pop()
+  console.log(s);
+  console.log(s.peek());
+  console.log(s.isEmpty());
+  console.log(s.size());
+  console.log(s.toString());
+
+  //3.封装函数实现十进制转二进制
+  function Dec2Bin(DecNumber) {
+    //1.创建一个栈对象
+    let stack = new Stack()
+    //2.循环操作
+    while(DecNumber != 0){
+      //2.1获取余数，并加入到栈结构中
+      stack.push(DecNumber % 2)
+      //2.2.获取整除后的结果，作为下一次计算的Dec2Bin
+      DecNumber = Math.floor(DecNumber / 2)//向下取整
+    }
+    //3.从栈中取出二进制数0和1
+    let res = ''
+    while(!stack.isEmpty()){
+      res += stack.pop()
+    }
+    return res
+  }
+  console.log(Dec2Bin(100));//1100100
+</script>
+</body>
+</html>

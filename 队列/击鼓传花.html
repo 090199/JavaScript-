@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>击鼓传花</title>
+  <script src="Queue的封装.js"></script>
+</head>
+<body>
+<!--多人围圈数数，数到指定数的人自动淘汰，求最后剩下的人在哪各位置-->
+<script>
+  function passName(nameList,num) {
+    //1.创建一个 队列
+    let queue = new Queue()
+    //2.将所有人依次添加到队列中
+    for(let i=0;i<nameList.length;i++){
+      queue.enqueue(nameList[i])
+    }
+    //3.开始数数（保证每次数数的人都是队列中的第一个元素）
+    while (queue.size() > 1){
+      for(let i =0;i<num-1;i++){
+        /*将num之前的所有人重新添加到队列的末尾*/
+        queue.enqueue(queue.dequeue())
+      }
+      /*删除num这个数的人*/
+      queue.dequeue()
+    }
+    // //4.获得获胜者在namelist中的下标值
+    console.log('最后还剩下：'+queue.size()+'个人');//查看最后还剩下多少人
+    let endName=queue.front()
+    console.log('这个人是：'+endName);
+    return nameList.indexOf(endName)//返回获胜者的索引
+  }
+
+  //测试击鼓传花
+  const names=['lrui','ouyang','fydong','qfei','coderwhy']
+  //console.log(passName(names, 3));
+  console.log('获胜者在原数组的索引为：'+passName(names, 3));
+</script>
+</body>
+</html>

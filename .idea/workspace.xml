@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="18a6ff29-76a9-4750-b816-821c5e4247a2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bKbXQELI50hsCPBPhjnldRsPaL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.HTML" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\workplace\数据结构与算法\栈" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.02.哈希表的封装.html">
+    <configuration name="01.单链表结构的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/链表/01.单链表结构的封装.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="01.哈希函数.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/哈希表/01.哈希函数.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="01.每日温度.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/leetcode每日一题/01.每日温度.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="02.哈希表的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/哈希表/02.哈希表的封装.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="优先队列的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/队列/优先队列的封装.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="击鼓传花.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/队列/击鼓传花.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="十进制转二进制.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/十进制转二进制.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="leetcode-环形链表.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/链表/leetcode-环形链表.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="leetcode-旋转矩阵.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/矩阵/leetcode-旋转矩阵.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="leetcode-螺旋矩阵.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/矩阵/leetcode-螺旋矩阵.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="set的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/集合/set的封装.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.02.哈希表的封装.html" />
+        <item itemvalue="JavaScript Debug.set的封装.html" />
+        <item itemvalue="JavaScript Debug.优先队列的封装.html" />
+        <item itemvalue="JavaScript Debug.leetcode-环形链表.html" />
+        <item itemvalue="JavaScript Debug.01.单链表结构的封装.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18a6ff29-76a9-4750-b816-821c5e4247a2" name="Default Changelist" comment="" />
+      <created>1588383771744</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588383771744</updated>
+      <workItem from="1588383775001" duration="4211000" />
+      <workItem from="1588648869768" duration="5245000" />
+      <workItem from="1588664458566" duration="72000" />
+      <workItem from="1591407209392" duration="12608000" />
+      <workItem from="1591446198418" duration="3665000" />
+      <workItem from="1591492127523" duration="18707000" />
+      <workItem from="1591533780992" duration="5740000" />
+      <workItem from="1591543130872" duration="12000" />
+      <workItem from="1591579585687" duration="8479000" />
+      <workItem from="1591601473480" duration="496000" />
+      <workItem from="1591622604168" duration="4677000" />
+      <workItem from="1591627823484" duration="258000" />
+      <workItem from="1591793619579" duration="2373000" />
+      <workItem from="1591796360923" duration="12000" />
+      <workItem from="1591843938102" duration="8251000" />
+      <workItem from="1591885822084" duration="86000" />
+      <workItem from="1591927898714" duration="1185000" />
+      <workItem from="1591950866215" duration="4951000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1591885906709">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1591885906709" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1591433380152">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1591433380152" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1591433380149">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1591433380149" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1591433380148">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1591433380148" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1591433380151">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1591433380151" />
+    <state width="1237" height="163" key="GridCell.Tab.1.bottom" timestamp="1591433380153">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1591433380153" />
+    <state width="1237" height="163" key="GridCell.Tab.1.center" timestamp="1591433380153">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1591433380153" />
+    <state width="1237" height="163" key="GridCell.Tab.1.left" timestamp="1591433380153">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1591433380153" />
+    <state width="1237" height="163" key="GridCell.Tab.1.right" timestamp="1591433380153">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1591433380153" />
+    <state x="144" y="0" key="SettingsEditor" timestamp="1591411138298">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="144" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1591411138298" />
+    <state x="323" y="198" width="669" height="444" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1591411018867">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="323" y="198" width="669" height="444" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1280.680@0.0.1280.680" timestamp="1591411018867" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1591952828544">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1591952828544" />
+  </component>
+</project>

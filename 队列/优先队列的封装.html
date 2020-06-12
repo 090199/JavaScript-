@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>优先队列的封装</title>
+</head>
+<body>
+<script>
+  function PriorityQueue() {
+    //创建内部类，用于创建元素
+    function QueueElement(element,priority) {
+      this.element = element
+      this.priority = priority
+    }
+    //属性
+    this.items = []
+    //方法
+    /*1.插入方法enqueue*/
+    PriorityQueue.prototype.enqueue = function (element,priority) {
+      //1.创建元素
+      let newElement = new QueueElement(element,priority)
+      //2.判断插入的元素是否是第一个元素，如果是，则直接插入，不需要比较优先级
+      if(this.items.length === 0){
+        this.items.push(newElement)
+      }else{
+        //3.比较优先级之后再插入到正确的位置
+        /*定义一个状态变量，用来记录newElement是否已被插入*/
+        let added = false
+        for(let i = 0; i < this.items.length; i++){
+          if(newElement.priority < this.items[i].priority){
+            /*插入元素，priority越小优先级越高，应该放在靠前的位置*/
+            this.items.splice(i,0,newElement)
+            added = true
+            break
+          }
+        }
+        //如果已经遍历到最后一个元素跳出for循环了，说明所有的元素优先级都比newElement的优先级高，直接插入到最后的位置
+        if(!added){
+          this.items.push(newElement)
+        }
+      }
+    }
+    /*2.dequeue()：移除队列中的第一个元素，并返回被移除的元素*/
+    PriorityQueue.prototype.dequeue = function () {
+      return this.items.shift()
+    }
+    /*3.front()：返回队列中的第一个元素*/
+    PriorityQueue.prototype.front = function () {
+      return this.items[0]
+    }
+    /*4.isEmpty()：如果队列中不包含任何元素，返回true*/
+    PriorityQueue.prototype.isEmpty = function () {
+      return this.items.length === 0
+    }
+    /*5.size()：返回队列中包含元素的个数*/
+    PriorityQueue.prototype.size = function () {
+      return this.items.length
+    }
+    /*6.toString()：将队列中的内容转换成字符串形*/
+    PriorityQueue.prototype.toString = function () {
+      let res = ''
+      for(let i = 0; i < this.items.length; i++){
+        res += this.items[i].element + '-' + this.items[i].priority + ' '
+      }
+      return res
+    }
+  }
+
+  //测试代码
+  let pq = new PriorityQueue()
+  pq.enqueue('abc',100)
+  pq.enqueue('bac',40)
+  pq.enqueue('cba',66)
+  pq.enqueue('aaa',0)
+  pq.enqueue('bbb',120)
+  console.log(pq.toString());
+
+</script>
+</body>
+</html>

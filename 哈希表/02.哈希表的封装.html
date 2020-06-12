@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>哈希表的封装</title>
+</head>
+<body>
+<script>
+  function hashTable() {
+    //属性
+    /*用于保存整个哈希表的数组*/
+    this.storage = []
+    /*用于记录当前哈希表中已存在的元素数，用于计算装填因子*/
+    /*
+    * loadFactor < 0.25 缩小容量
+    * loadFactor > 0.7 扩容
+    * */
+    this.count = 0
+    /*保存当前哈希表的总长度*/
+    this.limit = 7
+
+    //方法
+    //1.哈希函数
+    hashTable.prototype.hashCode = function (str,size) {
+      let hashCode = 0
+      /*将字符串转换成一个比较大的数字*/
+      for (let i = 0; i < str.length; i++) {
+        hashCode = 37 * hashCode + str.charCodeAt(i)
+      }
+      /*将比较大的数字压缩成数组成数组范围的大小*/
+      let index = hashCode % size
+      return index
+    }
+    //2.插入和修改操作
+    hashTable.prototype.put = function (key,value) {
+      /*1.通过key找到对应插入的位置*/
+      let index = this.hashCode(key,this.limit)
+      /*2.取出该位置上的bucket*/
+      let bucket = this.storage[index]
+      /*2.1如果bucket不存在则创建一个*/
+      if(bucket === undefined){
+        /*创建一个bucket*/
+        bucket = []
+        /*将该bucket放在该index位置上*/
+        this.storage[index] = bucket
+      }
+      /*3.判断是修改元素还是插入元素*/
+      for (let i = 0; i < bucket.length; i++) {
+        let tuple = bucket[i]
+        /*通过value来修改元素*/
+        if(tuple[0] === key){
+          tuple[1] = value
+          return
+        }
+      }
+      /*4.添加元素*/
+      bucket.push([key,value])
+      this.count += 1
+    }
+    //3.获取方法
+    hashTable.prototype.get = function (key) {
+      /*1.通过key值来获取对应的index位置*/
+      let index = this.hashCode(key,this.limit)
+      /*2.取出index位置的bucket*/
+      let bucket = this.storage[index]
+      /*2.1如果该bucket不存在直接返回null*/
+      if(bucket === undefined){
+        return null
+      }
+      /*2.2.bucket存在，则遍历bucket中的每一个key，获线性查找取对应的value*/
+      for (let i = 0; i < bucket.length; i++) {
+        let tuple = bucket[i]
+        if(tuple[0] === key){
+          return tuple[1]//返回value值
+        }
+      }
+      /*2.3遍历完bucket之后，还没找到，直接返回null*/
+      return null
+    }
+    //4.删除操作
+    hashTable.prototype.remove = function (key) {
+      /*1.通过key找到对应位置的index*/
+      let index = this.hashCode(key,this.limit)
+      /*2.取出index位置的 bucket*/
+      let bucket = this.storage[index]
+      /*2.1判断该bucket是否存在，不存在则直接返回nul*/
+      if(bucket === undefined){
+        return null
+      }
+      /*2.2如果bucket存在，则线性查找遍历bucket，删除对应的key*/
+      for (let i = 0; i < bucket.length; i++) {
+        let tuple = bucket[i]
+        if(tuple[0] === key){
+          bucket.splice(i,1)
+          this.count -= 1
+          return tuple[1]//返回删除的value
+        }
+      }
+      /*2.3遍历bucket之后，仍然没有找到，则直接返回null*/
+      return null
+    }
+    //5.判断哈希表是否为空
+    hashTable.prototype.isEmpty = function () {
+      return this.count === 0
+    }
+    //6.获取哈希表中元素的个数
+    hashTable.prototype.size = function () {
+      return this.count
+    }
+  }
+
+  //测试代码
+  let ht = new hashTable()
+  //插入元素
+  ht.put('abc','123')
+  ht.put('bac','345')
+  ht.put('cab','678')
+  console.log(ht.isEmpty());//false
+  console.log(ht.size());//3
+  //获取元素
+  console.log(ht.get('bac'));//345
+  console.log(ht.get('aaa'));//null
+  //删除元素
+  console.log(ht.remove('cab'));//678
+  console.log(ht.remove('bbb'));//null
+  console.log(ht.get('cab'));//null
+  console.log(ht.isEmpty());//false
+  console.log(ht.size());//2
+</script>
+</body>
+</html>

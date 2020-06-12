@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>哈希函数</title>
+</head>
+<body>
+<script>
+  /*
+  * 哈希函数：
+  *  1.将一个单词转换为一个比较大的数字，称为hashCode
+  *  2.将hashCode压缩在数组范围内（数组大小）
+  * */
+  function hashFunc(str,size) {
+    let hashCode = 0
+    for (let i = 0; i < str.length; i++) {
+      /*一半在开发中，底数制数用的最多的是37*/
+      /*使用霍纳法则，优化多项式*/
+      hashCode = 37 * hashCode + str.charCodeAt(i)
+    }
+    let index = hashCode % size
+    return index
+  }
+//测试代码
+  console.log(hashFunc('abc', 7));//4
+  console.log(hashFunc('cba', 7));//3
+  console.log(hashFunc('nba', 7));//5
+  console.log(hashFunc('mba', 7));//1
+
+</script>
+</body>
+</html>
