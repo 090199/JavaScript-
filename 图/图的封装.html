@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>图的封装</title>
+</head>
+<body>
+<script src="../字典/dict.js"></script>
+<script src="../队列/Queue的封装.js"></script>
+<script>
+  function Graph() {
+    /*属性顶点（数组）和边（字典）*/
+    this.vertexes = []//保存顶点，数组保存
+    this.edges = new Dictionary()//保存边，用字典保存
+    /*方法*/
+    //1.添加顶点的方法
+    Graph.prototype.addVertex = function (v) {
+      this.vertexes.push(v)
+      /*一个顶点对应一组边*/
+      this.edges.set(v,[])
+    }
+    //2.添加边的方法，两个顶点作为参数，表hi这两个顶点之间存在边
+    Graph.prototype.addEdge = function (v1,v2) {
+      /*无向图*/
+      this.edges.get(v1).push(v2)
+      this.edges.get(v2).push(v1)
+    }
+    //3.实现toString方法
+    Graph.prototype.toString = function () {
+      /*定义变量，保存最后的结果值*/
+      let res = ''
+      for (let i = 0; i < this.vertexes.length; i++) {
+        /*取出所有的顶点*/
+        res += this.vertexes[i] + '-->'
+        /*取出顶点所对应的边*/
+        let vEdges = this.edges.get(this.vertexes[i])
+        /*将对应边和顶点拼接起来*/
+        res += [...vEdges]
+        // for (let j = 0; j < vEdges.length; j++) {
+        //   res += vEdges[j] + ' '
+        // }
+        /*每次结束之后都有一个换行*/
+        res += '\n'
+      }
+      return res
+    }
+    //4.利用颜色来初始化每个顶点的状态
+    Graph.prototype.initializeColor = function () {
+      /*colors数组记录每个顶点对应的颜色数组*/
+      let colors = []
+      /*取出所有的顶点，并初始化顶点的颜色为白色*/
+      for (let i = 0; i < this.vertexes.length; i++) {
+        /*动态给每个数组元素添加this.vertexes[i]属性，属性值为“white”*/
+        colors[this.vertexes[i]] = 'white'
+      }
+      return colors
+    }
+    //5.广度优先搜索BFS，基于队列实现
+    /*第一个参数用于指定顶点，表示从该顶点开始遍历；
+    * 第二个参数为回调函数，表示顶点 V 遍历之后执行该函数*/
+    Graph.prototype.bfs = function (initV,callback) {
+      //1.初始化所有顶点的颜色
+      let colors = this.initializeColor()
+      //2.创建队列
+      let queue = new Queue()
+      //3.将指定的顶点加入到队列中
+      queue.enqueue(initV)
+      //4.循环从队列中取出元素
+      while (!queue.isEmpty()){
+        //4.1从队列中取出第一个顶点
+        let v = queue.dequeue()
+        //4.2获取和该顶点相邻的所有其他顶点
+        let eList = this.edges.get(v)
+        //4.3将顶点 v 设置为灰色
+        colors[v] = 'gray'
+        //4.4遍历所有的顶点并加入到队列中
+        for (let i = 0; i < eList.length; i++) {
+          let e = eList[i]
+          /*首先将所有的白色顶点都设置为灰色，同时将其加入到队列中，这样就可以防止出现重复的相邻元素，从而避免重复的遍历元素*/
+          if(colors[e] === 'white'){
+            colors[e] = 'gray'
+            queue.enqueue(e)
+          }
+        }
+        //5.访问顶点
+        callback(v)
+        //6.将顶点设置为黑色
+        colors[v] = 'black'
+      }
+    }
+    //6.深度优先，递归实现
+    Graph.prototype.dfs = function (initV,callback) {
+      //1.初始化颜色
+      let colors = this.initializeColor()
+      //2.递归实现DFS遍历
+      this.dfsVisit(initV,colors,callback)
+    }
+    /*
+    * 第一个参数为指定开始遍历的顶点
+    * 第二个参数为所有的顶点颜色数组
+    * 第三个参数为处理的回调函数
+    * */
+    Graph.prototype.dfsVisit = function (v,colors,callback) {
+      //1.将颜色设置为灰色
+      colors[v] = 'gray'
+      //2.处理 v 顶点
+      callback(v)
+      //3.访问 v 相邻的顶点
+      let eList = this.edges.get(v)
+      for (let i = 0; i < eList.length; i++) {
+        let e = eList[i]
+        if(colors[e] === 'white'){
+          this.dfsVisit(e,colors,callback)
+        }
+      }
+      //4.将颜色设置为黑色
+      colors[v] = 'black'
+    }
+  }
+
+  //测试代码
+  let graph = new Graph()
+  let myVertexes = ['A','B','C','D','E','F','G','H','I']
+
+  /*可以通过以下方法来添加顶点，但是，会漏掉每个顶点初始化对应一个空数组，所以不建议使用*/
+  // graph.vertexes = myVertexes
+
+  //添加顶点
+  for (let i = 0; i < myVertexes.length; i++) {
+    graph.addVertex(myVertexes[i])
+  }
+  //添加顶点
+  graph.addEdge('A','B')
+  graph.addEdge('A','C')
+  graph.addEdge('A','D')
+  graph.addEdge('C','D')
+  graph.addEdge('C','G')
+  graph.addEdge('D','G')
+  graph.addEdge('D','H')
+  graph.addEdge('B','E')
+  graph.addEdge('B','F')
+  graph.addEdge('E','I')
+  //toString方法
+  console.log(graph.toString());
+  //BFS遍历
+  let res = ''
+  graph.bfs(graph.vertexes[0],v => res += v + ' ')
+  console.log(res);
+  //DFS遍历
+  res = ''
+  graph.dfs(graph.vertexes[0],v => res += v + ' ')
+  console.log(res);
+
+</script>
+</body>
+</html>

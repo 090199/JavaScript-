@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18a6ff29-76a9-4750-b816-821c5e4247a2" name="Default Changelist" comment="" />
+    <list default="true" id="18a6ff29-76a9-4750-b816-821c5e4247a2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/哈希表/02.哈希表的封装.html" beforeDir="false" afterPath="$PROJECT_DIR$/哈希表/02.哈希表的封装.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +20,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1bKbXQELI50hsCPBPhjnldRsPaL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,6 +35,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -39,47 +51,31 @@
       <recent name="D:\JetBrains\workplace\数据结构与算法\栈" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.02.哈希表的封装.html">
-    <configuration name="01.单链表结构的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/链表/01.单链表结构的封装.html" useBuiltInWebServerPort="true">
+  <component name="RunManager" selected="JavaScript Debug.06.验证二叉搜索树.html">
+    <configuration name="05.对称二叉树.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/leetcode每日一题/05.对称二叉树.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="01.哈希函数.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/哈希表/01.哈希函数.html" useBuiltInWebServerPort="true">
+    <configuration name="06.验证二叉搜索树.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/leetcode每日一题/06.验证二叉搜索树.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="01.每日温度.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/leetcode每日一题/01.每日温度.html" useBuiltInWebServerPort="true">
+    <configuration name="居中.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/其他/居中.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="02.哈希表的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/哈希表/02.哈希表的封装.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="优先队列的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/队列/优先队列的封装.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="击鼓传花.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/队列/击鼓传花.html" useBuiltInWebServerPort="true">
+    <configuration name="图的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/图/图的封装.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="十进制转二进制.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/十进制转二进制.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="leetcode-环形链表.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/链表/leetcode-环形链表.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="leetcode-旋转矩阵.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/矩阵/leetcode-旋转矩阵.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="leetcode-螺旋矩阵.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/矩阵/leetcode-螺旋矩阵.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="set的封装.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/集合/set的封装.html" useBuiltInWebServerPort="true">
+    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/数据结构与算法/test.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.02.哈希表的封装.html" />
-        <item itemvalue="JavaScript Debug.set的封装.html" />
-        <item itemvalue="JavaScript Debug.优先队列的封装.html" />
-        <item itemvalue="JavaScript Debug.leetcode-环形链表.html" />
-        <item itemvalue="JavaScript Debug.01.单链表结构的封装.html" />
+        <item itemvalue="JavaScript Debug.06.验证二叉搜索树.html" />
+        <item itemvalue="JavaScript Debug.test.html" />
+        <item itemvalue="JavaScript Debug.05.对称二叉树.html" />
+        <item itemvalue="JavaScript Debug.居中.html" />
       </list>
     </recent_temporary>
   </component>
@@ -111,6 +107,15 @@
       <workItem from="1591885822084" duration="86000" />
       <workItem from="1591927898714" duration="1185000" />
       <workItem from="1591950866215" duration="4951000" />
+      <workItem from="1591967522751" duration="5138000" />
+      <workItem from="1591972885846" duration="609000" />
+      <workItem from="1592030777828" duration="2001000" />
+      <workItem from="1592048824756" duration="3983000" />
+      <workItem from="1592052835493" duration="160000" />
+      <workItem from="1592147785356" duration="2258000" />
+      <workItem from="1592211723759" duration="15609000" />
+      <workItem from="1592270840487" duration="11762000" />
+      <workItem from="1592323177466" duration="16025000" />
     </task>
     <servers />
   </component>
@@ -118,10 +123,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1591885906709">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1591974397217">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1591885906709" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1591974397217" />
     <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1591433380152">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -162,9 +167,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="323" y="198" width="669" height="444" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1280.680@0.0.1280.680" timestamp="1591411018867" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1591952828544">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1592312727733">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1591952828544" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1592312727733" />
   </component>
 </project>

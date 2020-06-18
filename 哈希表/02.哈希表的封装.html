@@ -56,6 +56,13 @@
       /*4.添加元素*/
       bucket.push([key,value])
       this.count += 1
+
+      /*5.判断是否需要扩容，当loadFactor > 0.75时，扩容，这里的扩容是将原来的哈希表容量扩大两倍*/
+      if(this.count > this.storage * 0.75){
+        let newSize = this.storage * 2
+        this.resize(this.getPrime(newSize))
+      }
+
     }
     //3.获取方法
     hashTable.prototype.get = function (key) {
@@ -94,6 +101,17 @@
           bucket.splice(i,1)
           this.count -= 1
           return tuple[1]//返回删除的value
+
+          //判断是否需要缩小容量
+          /*
+          * 由于这里需要做除法，所以使用向下取整
+          * 当loadFaactor < 0.25时，就需要缩小容量，且规定哈希表的最小容量为7
+          * */
+          if(this.storage > 7 && this.count < this.storage * 0.25){
+            let newSize = Math.floor(this.limit / 2)
+            this.resize(this.getPrime(newSize))
+          }
+
         }
       }
       /*2.3遍历bucket之后，仍然没有找到，则直接返回null*/
@@ -107,6 +125,52 @@
     hashTable.prototype.size = function () {
       return this.count
     }
+    //7.哈希表的扩容 / 缩容操作
+    hashTable.prototype.resize = function (newLimit) {
+      /*1.保存旧的哈希表*/
+      let oldStorage = this.storage
+      /*2.重置所有的属性*/
+      this.storage = []//保存新的哈希表
+      this.limit = newLimit//设置新的哈希表的长度
+      this.count = 0//记录新的哈希表中的元素个数
+      /*3.取出所有的bucket，遍历其中的元素，重新将元素插入到新的哈希表中*/
+      for (let i = 0; i < oldStorage.length; i++) {
+        /*3.1取出所有的bucket*/
+        let bucket = oldStorage[i]
+        /*3.2判断bucket是否为空*/
+        if(bucket === null)
+          continue
+        /*3.3遍历bucket中所有的元素，并重新插入新的哈希表*/
+        for (let j = 0; j < bucket.length; j++) {
+          let tuple = bucket[j]
+          this.put(tuple[0],tuple[1])
+        }
+      }
+    }
+    //8.判断一个数是否是质数
+    hashTable.prototype.isPrime = function(num) {
+      if(num <= 1)
+        return false
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if(num % i === 0)
+          return false
+      }
+      return true
+    }
+    //9.获取一个新的质数
+    /*
+    * 原来容量为 7==> 7*2=14 ==>17新的容量
+    * */
+    hashTable.prototype.getPrime = function (num) {
+      while (!this.isPrime(num)){
+        num++
+      }
+      return num
+    }
+
+
+
+
   }
 
   //测试代码

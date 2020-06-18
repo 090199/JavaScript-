@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>判断一个数是否是素数</title>
+</head>
+<body>
+<script>
+  /*
+  * 质数：
+  *   1.大于 1 的自然数
+  *   2.只能被 1和其自身整除
+  * */
+  function isPrime(num) {
+    if(num <= 1)
+      return false
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if(num % i === 0)
+        return false
+    }
+    return true
+  }
+
+  // //测试代码
+  // console.log(isPrime(1));//false
+  // console.log(isPrime(15));//false
+  // console.log(isPrime(4));//false
+  // console.log(isPrime(31));//true
+  // console.log(isPrime(12));//false
+  console.log(isPrime(2));//true
+  console.log(isPrime(3));//true
+
+</script>
+</body>
+</html>
